@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #2C2420;
+  
+  /* DearDiary Palette */
+  --paper: #FAF7F2;
+  --espresso: #2C2420;
+  --taupe: #70635B;
+  --cinnamon: #8B5E3C;
+  --sand: #E5DED5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-paper: var(--paper);
+  --color-espresso: var(--espresso);
+  --color-taupe: var(--taupe);
+  --color-cinnamon: var(--cinnamon);
+  --color-sand: var(--sand);
+
+  --font-libre-caslon: var(--font-libre-caslon);
+  --font-faustina: var(--font-faustina);
+  --font-inter: var(--font-inter);
+}
+
+body {
+  background: var(--paper);
+  color: var(--espresso);
+  font-family: var(--font-faustina), serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-libre-caslon), serif;
+}
+
+.ui-text {
+  font-family: var(--font-inter), sans-serif;
+}
