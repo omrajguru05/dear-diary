@@ -8,6 +8,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         const jsonResponse = await handleUpload({
             body,
             request,
+            token: process.env.DEAR_DIARY_OM_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
             onBeforeGenerateToken: async (pathname: string /*, clientPayload */) => {
                 // Generate a client token for the browser to upload the file
                 // ⚠️ Authenticate this block, e.g. check for a valid session
