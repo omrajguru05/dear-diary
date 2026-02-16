@@ -14,9 +14,7 @@ export function ProfileHeader() {
                 <h2 className="text-lg font-serif font-bold text-espresso">
                     Hi, I am Om
                 </h2>
-                <p className="ui-text text-sm text-taupe max-w-sm leading-relaxed">
-                    Welcome to my digital journal. A collection of daily thoughts, quick ships, and personal logs.
-                </p>
+                {/* User requested to remove the "Welcome to my digital journal..." text */}
             </div>
         </div>
     );

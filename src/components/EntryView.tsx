@@ -25,14 +25,14 @@ export function EntryView({ entry }: EntryProps) {
     if (!entry) {
         return (
             <div className="py-12 text-center">
-                <p className="ui-text text-taupe italic">No entries yet. Start writing today.</p>
+                <p className="ui-text text-taupe italic">No entries yet.</p>
             </div>
         );
     }
 
     return (
         <article className="space-y-6 animate-in fade-in duration-700">
-            <header className="space-y-2 mb-8 border-b border-sand/50 pb-6">
+            <header className="space-y-2 mb-8 border-b border-sand/10 pb-6">
                 <time className="ui-text text-sm font-medium text-cinnamon uppercase tracking-wider block">
                     {formatDate(entry.entry_date)}
                 </time>
@@ -44,11 +44,14 @@ export function EntryView({ entry }: EntryProps) {
             </header>
 
             <div className="prose prose-stone prose-lg max-w-none 
-        prose-headings:font-serif prose-headings:text-espresso 
-        prose-p:font-serif prose-p:text-espresso/90 prose-p:leading-loose
-        prose-a:text-cinnamon prose-a:no-underline hover:prose-a:underline
-        prose-img:rounded-md prose-img:shadow-sm prose-img:w-full prose-img:border prose-img:border-sand
-        prose-blockquote:border-l-cinnamon prose-blockquote:bg-sand/10 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:not-italic
+        prose-headings:font-serif prose-headings:text-espresso prose-headings:font-bold
+        prose-p:font-body prose-p:text-espresso/90 prose-p:leading-loose prose-p:text-[19px]
+        prose-a:text-cinnamon prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-2
+        prose-img:rounded-xl prose-img:shadow-md prose-img:w-full prose-img:border prose-img:border-sand/20
+        prose-blockquote:border-l-4 prose-blockquote:border-cinnamon/50 prose-blockquote:bg-sand/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-espresso/80
+        prose-strong:text-espresso prose-strong:font-bold prose-strong:font-serif
+        prose-li:text-espresso/90 prose-li:font-body
+        prose-hr:border-sand/20
       ">
                 <ReactMarkdown>{entry.content || ""}</ReactMarkdown>
             </div>

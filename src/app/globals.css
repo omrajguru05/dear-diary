@@ -1,42 +1,62 @@
 @import "tailwindcss";
 
-:root {
-  --background: #FAF7F2;
-  --foreground: #2C2420;
-  
-  /* DearDiary Palette */
-  --paper: #FAF7F2;
-  --espresso: #2C2420;
-  --taupe: #70635B;
-  --cinnamon: #8B5E3C;
-  --sand: #E5DED5;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-paper: var(--paper);
   --color-espresso: var(--espresso);
   --color-taupe: var(--taupe);
   --color-cinnamon: var(--cinnamon);
   --color-sand: var(--sand);
 
-  --font-libre-caslon: var(--font-libre-caslon);
+  --font-libre-caslon-text: var(--font-libre-caslon-text);
   --font-faustina: var(--font-faustina);
   --font-inter: var(--font-inter);
 }
 
+:root {
+  /* Very Dark Brown Background */
+  --background: #1E1A17;
+  /* Grayish Text */
+  --foreground: #B0A8A2;
+
+  --paper: #1E1A17;
+  --ink: #B0A8A2;
+  --sand: #3E3834;
+  /* Darker accent */
+  --espresso: #E8E0D9;
+  /* Light text for contrast */
+  --cinnamon: #D4A373;
+  /* Muted brown/orange accent */
+  --taupe: #85807C;
+  /* Muted gray */
+
+  --font-libre-caslon-text: var(--font-libre-caslon-text);
+}
+
 body {
-  background: var(--paper);
-  color: var(--espresso);
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-faustina), serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-libre-caslon), serif;
+/* Headings - Libre Caslon Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-libre-caslon-text), serif;
+  color: var(--espresso);
+  /* Lighter for headings */
 }
 
-.ui-text {
+/* UI Text - Inter */
+.ui-text,
+nav,
+button,
+a {
   font-family: var(--font-inter), sans-serif;
 }

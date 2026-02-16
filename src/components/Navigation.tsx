@@ -8,26 +8,28 @@ export function Navigation() {
     const pathname = usePathname();
 
     return (
-        <nav className="w-full max-w-[650px] mx-auto py-8 flex items-center justify-between px-4 sm:px-0">
-            <Link href="/" className="text-2xl font-bold font-serif hover:text-cinnamon transition-colors">
-                DearDiary.
+        <nav className="w-full max-w-[650px] mx-auto py-8 flex items-center justify-between px-4 sm:px-0 font-sans">
+            <Link href="/" className="text-xl font-bold font-serif hover:text-cinnamon transition-colors text-espresso">
+                Entries of Clock
             </Link>
 
-            <div className="flex items-center gap-6 ui-text text-sm font-medium">
-                <Link
-                    href="/"
-                    className={cn("hover:text-cinnamon transition-colors", pathname === "/" && "text-cinnamon")}
+            <div className="flex items-center gap-6 text-sm font-medium text-taupe">
+                <a
+                    href="https://omrajguru.co.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-cinnamon transition-colors"
                 >
-                    Today
-                </Link>
-                <Link
-                    href="/archive"
-                    className={cn("hover:text-cinnamon transition-colors", pathname === "/archive" && "text-cinnamon")}
+                    Main
+                </a>
+                <a
+                    href="https://omrajguru.co.in/recents-ships"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-cinnamon transition-colors"
                 >
-                    Archive
-                </Link>
-                {/* Hidden Admin Link for now, or subtle */}
-                {/* <Link href="/admin" className="text-taupe hover:text-espresso">Admin</Link> */}
+                    Recents
+                </a>
             </div>
         </nav>
     );
