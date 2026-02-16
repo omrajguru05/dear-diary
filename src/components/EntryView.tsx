@@ -1,5 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 // Helper to format date cleanly
 function formatDate(dateString: string) {
@@ -23,7 +24,7 @@ interface EntryProps {
     titleLink?: boolean;
 }
 
-export function EntryView({ entry, titleLink = false }: EntryProps) {
+export function EntryView({ entry, titleLink = false, preview = false }: EntryProps & { preview?: boolean }) {
     if (!entry) {
         return (
             <div className="py-12 text-center">
@@ -39,31 +40,50 @@ export function EntryView({ entry, titleLink = false }: EntryProps) {
                     {formatDate(entry.entry_date)}
                 </time>
                 {entry.title && (
-                    titleLink && entry.slug ? (
-                        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
-                            <a href={`/e/${entry.slug}`} className="hover:text-cinnamon transition-colors">
+                    <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
+                        {titleLink && entry.slug ? (
+                            <Link href={`/e/${entry.slug}`} className="hover:text-cinnamon transition-colors">
                                 {entry.title}
-                            </a>
-                        </h1>
-                    ) : (
-                        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
-                            {entry.title}
-                        </h1>
-                    )
+                            </Link>
+                        ) : (
+                            entry.title
+                        )}
+                    </h1>
                 )}
             </header>
 
-            <div className="prose prose-stone prose-lg max-w-none 
-        prose-headings:font-serif prose-headings:text-espresso prose-headings:font-bold
-        prose-p:font-body prose-p:text-espresso/90 prose-p:leading-loose prose-p:text-[19px]
-        prose-a:text-cinnamon prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-2
-        prose-img:rounded-xl prose-img:shadow-md prose-img:w-full prose-img:border prose-img:border-sand/20
-        prose-blockquote:border-l-4 prose-blockquote:border-cinnamon/50 prose-blockquote:bg-sand/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-espresso/80
-        prose-strong:text-espresso prose-strong:font-bold prose-strong:font-serif
-        prose-li:text-espresso/90 prose-li:font-body
-        prose-hr:border-sand/20
-      ">
-                <ReactMarkdown>{entry.content || ""}</ReactMarkdown>
+            <div className={`relative ${preview ? "max-h-[400px] overflow-hidden" : ""}`}>
+                <div className="prose prose-stone prose-lg max-w-none 
+          prose-headings:font-serif prose-headings:text-espresso prose-headings:font-bold
+          prose-p:font-body prose-p:text-espresso/90 prose-p:leading-loose prose-p:text-[19px] prose-p:mb-6
+          prose-a:text-cinnamon prose-a:no-underline hover:prose-a:underline hover:prose-a:decoration-2
+          prose-img:rounded-xl prose-img:shadow-md prose-img:w-full prose-img:border prose-img:border-sand/20
+          prose-blockquote:border-l-4 prose-blockquote:border-cinnamon/50 prose-blockquote:bg-sand/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-espresso/80
+          prose-strong:text-espresso prose-strong:font-bold prose-strong:font-serif
+          prose-li:text-espresso/90 prose-li:font-body
+          prose-hr:border-sand/20
+        ">
+                    <ReactMarkdown
+                        components={{
+                            p: ({ children }) => <p className="mb-6 last:mb-0">{children}</p>
+                        }}
+                    >
+                        {entry.content || ""}
+                    </ReactMarkdown>
+                </div>
+
+                {preview && (
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent flex items-end justify-center pb-0">
+                        <Link
+                            href={`/e/${entry.slug}`}
+                            className="w-full h-full flex items-end justify-center pb-4 group"
+                        >
+                            <span className="ui-text text-cinnamon text-sm font-medium uppercase tracking-widest border-b border-cinnamon/30 pb-1 group-hover:border-cinnamon transition-all">
+                                Read Entry
+                            </span>
+                        </Link>
+                    </div>
+                )}
             </div>
         </article>
     );

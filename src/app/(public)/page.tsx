@@ -11,7 +11,7 @@ export default async function Home() {
     <div className="py-8 space-y-12">
       <ProfileHeader />
       <main>
-        <EntryView entry={latestEntry} titleLink={true} />
+        <EntryView entry={latestEntry} titleLink={true} preview={true} />
       </main>
     </div>
   );
