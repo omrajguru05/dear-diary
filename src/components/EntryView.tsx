@@ -18,10 +18,12 @@ interface EntryProps {
         entry_date: string;
         title?: string;
         content?: string;
+        slug?: string;
     } | null;
+    titleLink?: boolean;
 }
 
-export function EntryView({ entry }: EntryProps) {
+export function EntryView({ entry, titleLink = false }: EntryProps) {
     if (!entry) {
         return (
             <div className="py-12 text-center">
@@ -37,9 +39,17 @@ export function EntryView({ entry }: EntryProps) {
                     {formatDate(entry.entry_date)}
                 </time>
                 {entry.title && (
-                    <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
-                        {entry.title}
-                    </h1>
+                    titleLink && entry.slug ? (
+                        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
+                            <a href={`/e/${entry.slug}`} className="hover:text-cinnamon transition-colors">
+                                {entry.title}
+                            </a>
+                        </h1>
+                    ) : (
+                        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-espresso leading-tight">
+                            {entry.title}
+                        </h1>
+                    )
                 )}
             </header>
 

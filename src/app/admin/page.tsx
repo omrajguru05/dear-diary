@@ -3,6 +3,7 @@ import { getAdminEntries } from "@/lib/admin-db";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { format } from "date-fns";
+import { DeleteEntry } from "@/components/admin/DeleteEntry";
 
 export const revalidate = 0; // Always fresh for admin
 
@@ -42,12 +43,16 @@ export default async function AdminDashboard() {
                                         {format(new Date(entry.entry_date), "MMM d, yyyy")}
                                     </td>
                                     <td className="p-4 font-serif text-lg text-espresso truncate max-w-xs">
-                                        {entry.title || "Untitled"}
+                                        <Link href={`/e/${entry.slug}`} target="_blank" className="hover:text-cinnamon transition-colors flex items-center gap-1 group">
+                                            {entry.title || "Untitled"}
+                                            <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs">↗</span>
+                                        </Link>
                                     </td>
-                                    <td className="p-4 text-right">
+                                    <td className="p-4 text-right flex items-center justify-end gap-2">
                                         <Link href={`/admin/edit/${entry.id}`} className="ui-text text-sm text-cinnamon hover:underline">
                                             Edit
                                         </Link>
+                                        <DeleteEntry id={entry.id} />
                                     </td>
                                 </tr>
                             ))

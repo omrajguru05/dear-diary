@@ -10,9 +10,8 @@
   --color-cinnamon: var(--cinnamon);
   --color-sand: var(--sand);
 
-  --font-libre-caslon-text: var(--font-libre-caslon-text);
-  --font-faustina: var(--font-faustina);
   --font-inter: var(--font-inter);
+  --font-open-sans: var(--font-open-sans);
 }
 
 :root {
@@ -32,13 +31,14 @@
   --taupe: #85807C;
   /* Muted gray */
 
-  --font-libre-caslon-text: var(--font-libre-caslon-text);
+  --font-inter: var(--font-inter);
+  --font-open-sans: var(--font-open-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-faustina), serif;
+  font-family: var(--font-open-sans), sans-serif;
 }
 
 /* Headings - Libre Caslon Text */
@@ -48,7 +48,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-libre-caslon-text), serif;
+  font-family: var(--font-inter), sans-serif;
   color: var(--espresso);
   /* Lighter for headings */
 }

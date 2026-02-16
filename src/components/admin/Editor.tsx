@@ -130,7 +130,7 @@ export function Editor({ initialData }: EditorProps) {
 
             <div className="flex justify-end gap-4">
                 <Button variant="secondary" onClick={() => router.back()}>Cancel</Button>
-                <Button onClick={handleSave} disabled={loading || isUploading}>
+                <Button onClick={handleSave} disabled={loading || isUploading || !title.trim()}>
                     {loading ? "Saving..." : "Publish"}
                 </Button>
             </div>

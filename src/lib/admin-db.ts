@@ -5,7 +5,7 @@ export async function getAdminEntries() {
 
     const { data, error } = await supabase
         .from("entries")
-        .select("id, entry_date, title, created_at")
+        .select("id, entry_date, title, slug, created_at")
         .order("entry_date", { ascending: false });
 
     if (error) {
