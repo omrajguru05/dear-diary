@@ -20,6 +20,25 @@ export async function getLatestEntry() {
     return data;
 }
 
+export async function getAllEntries() {
+    const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
+
+    const { data, error } = await supabase
+        .from("entries")
+        .select("*")
+        .order("entry_date", { ascending: false });
+
+    if (error) {
+        console.error("Error fetching all entries:", error);
+        return [];
+    }
+
+    return data;
+}
+
 export async function getAllEntryDates() {
     const supabase = createClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
